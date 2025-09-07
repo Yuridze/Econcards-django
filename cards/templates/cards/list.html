@@ -1,0 +1,19 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-3">Карточки (всего: {{ pairs|length }})</h1>
+{% if pairs %}
+<div class="table-responsive">
+<table class="table table-striped align-middle">
+  <thead><tr><th>#</th><th>Вопрос</th><th>Ответ</th></tr></thead>
+  <tbody>
+    {% for q,a in pairs %}
+      <tr><td>{{ forloop.counter }}</td><td>{{ q }}</td><td>{{ a }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<p>Пока нет карточек. Загрузите файл или добавьте вручную.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,11 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-3">Загрузка карточек из файла</h1>
+<p>Формат строк: <code>вопрос -> ответ</code> или <code>вопрос\tответ</code>. Пустые строки и строки, начинающиеся с <code>#</code>, игнорируются.</p>
+<form method="post" enctype="multipart/form-data" class="card p-3">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="btn btn-primary" type="submit">Загрузить</button>
+</form>
+{% endblock %}

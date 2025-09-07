@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="mb-3">Тренажёр ({{ count }} карточек)</h1>
+<div class="card p-3">
+  <h5 class="mb-3">Вопрос:</h5>
+  <p class="fs-5">{{ question }}</p>
+  {% if show %}
+    <hr>
+    <h5 class="mb-3">Ответ:</h5>
+    <p class="fs-5">{{ answer }}</p>
+  {% endif %}
+  <form method="post" class="d-flex gap-2 mt-3">
+    {% csrf_token %}
+    {% if not show %}
+      <button class="btn btn-primary" name="action" value="show" type="submit">Показать ответ</button>
+    {% else %}
+      <button class="btn btn-success" name="action" value="next" type="submit">Следующая</button>
+    {% endif %}
+    <a class="btn btn-outline-secondary" href="?next=1">Случайная</a>
+    <a class="btn btn-outline-danger" href="?reset=1">Сброс</a>
+  </form>
+</div>
+{% endblock %}
